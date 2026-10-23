@@ -140,18 +140,18 @@ These visualizations are intended to inspect model behaviour and the learned rep
 
 The repository is centered on two notebooks:
 
-- `Clean_01_Data_Preparation_and_OCT_SSL.ipynb` — data preparation, preprocessing, DINO pretraining, and SSL representation analysis.
-- `Clean_02_Final_GF_Training_and_GDP_External_Evaluation.ipynb` — multimodal GF model training, operating-threshold selection, internal evaluation, and held-out GDP evaluation with MC dropout and interpretability analyses.
+- `C_01_Data_Preparation_and_OCT_SSL.ipynb` — data preparation, preprocessing, DINO pretraining, and SSL representation analysis.
+- `C_02_Final_GF_Training_and_GDP_External_Evaluation.ipynb` — multimodal GF model training, operating-threshold selection, internal evaluation, and held-out GDP evaluation with MC dropout and interpretability analyses.
 
 The following artifacts are useful for reusing the trained models without repeating training. Add the corresponding download links after uploading the files to a GitHub Release or another permitted host.
 
 | Artifact | Purpose | Download |
 |---|---|---|
-| `best_model.pt` | Final trained multimodal OCT + RNFLT classifier | [Model weights](ADD_MODEL_RELEASE_URL) |
-| `dino_teacher_resnet18_encoder_axis0_ssl_v2.pt` | DINO-pretrained teacher ResNet-18 encoder | [SSL encoder](ADD_SSL_ENCODER_URL) |
-| `rnflt_stats_gf_train_only.json` | Training-only RNFLT normalization statistics required for consistent preprocessing | [Preprocessing statistics](ADD_RNFLT_STATS_URL) |
+| `best_model.pt` | Final trained multimodal OCT + RNFLT classifier | [Model weights](https://drive.google.com/file/d/1MI0tDAtOfZR3BjvbG2SRwdHEPr71-42t/view?usp=sharing) |
+| `dino_teacher_resnet18_encoder_axis0_ssl_v2.pt` | DINO-pretrained teacher ResNet-18 encoder | [SSL encoder](https://drive.google.com/file/d/1894ouFlFkfVabSWzDVi6yB8FRui8fkkg/view?usp=sharing) |
+| `rnflt_stats_gf_train_only.json` | Training-only RNFLT normalization statistics required for consistent preprocessing | [Preprocessing statistics](https://drive.google.com/file/d/105I7Agfa4lndQnk90XhI7SHyvuEoNp-B/view?usp=sharing) |
 | `evaluation_protocol_locked.json` | Records the selected operating threshold and its evaluation protocol, linked to the corresponding checkpoint | [Evaluation protocol](ADD_PROTOCOL_URL) |
-| `training_config.json` | Model/training configuration and provenance information | [Training configuration](ADD_CONFIG_URL) |
+| `training_config.json` | Model/training configuration and provenance information | [Training configuration](https://drive.google.com/file/d/1FltTnJvsP679vXoQu2w1gVWBpShGZxPg/view?usp=sharing) |
 
 Do not distribute the original clinical datasets or sample-level prediction files through this repository unless their licenses and data-use agreements explicitly permit it. The notebooks may require access to the datasets in their original approved location and may need their data paths adjusted for your environment. Check the applicable dataset terms before redistributing trained weights as well.
 
@@ -160,8 +160,8 @@ Do not distribute the original clinical datasets or sample-level prediction file
 1. Clone or download this repository and install the required Python packages in the notebook environment.
 2. Obtain access to Harvard-GF and the permitted Harvard-GDP data used by the workflow; the datasets are not included here.
 3. Update dataset and output paths for your environment.
-4. Run `Clean_01_Data_Preparation_and_OCT_SSL.ipynb` for preprocessing and SSL pretraining, or load the released SSL encoder if you do not need to repeat pretraining.
-5. Run `Clean_02_Final_GF_Training_and_GDP_External_Evaluation.ipynb` to train the downstream classifier, or load the released classifier checkpoint for evaluation/inference.
+4. Run `C_01_Data_Preparation_and_OCT_SSL.ipynb` for preprocessing and SSL pretraining, or load the released SSL encoder if you do not need to repeat pretraining.
+5. Run `C_02_Final_GF_Training_and_GDP_External_Evaluation.ipynb` to train the downstream classifier, or load the released classifier checkpoint for evaluation/inference.
 
 For valid inference, keep the preprocessing consistent with training, including the 12 OCT slice indices, grayscale input preparation, RNFLT invalid-value imputation, and the **Harvard-GF training-derived** RNFLT normalization statistics. Apply the fixed threshold only to probabilities produced by the matching checkpoint and preprocessing pipeline.
 
