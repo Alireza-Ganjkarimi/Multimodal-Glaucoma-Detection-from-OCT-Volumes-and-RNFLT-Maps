@@ -19,7 +19,7 @@ The OCT encoder is pretrained with a DINO-style teacher–student framework. Pre
 
 Each B-scan is converted from 8-bit intensity to `[0, 1]`, resized while preserving its aspect ratio, and placed on a `224 × 320` canvas. Two independently augmented views are created for DINO training. The teacher and student use grayscale-adapted ResNet-18 backbones initialized from random weights. A projection head produces 4,096-dimensional self-supervised logits; these logits are used for the DINO objective, not as clinical classes. Training runs for up to 50 epochs with AdamW followed by cosine learning-rate decay, and an EMA teacher. After pretraining, the **teacher ResNet-18 backbone** is retained for downstream classification. 
 
-<img width="975" height="650" alt="image" src="https://github.com/user-attachments/assets/5ec4cbe7-1887-431c-a439-d84b3b1400f2" />
+<img width="4500" height="3000" alt="Presentation_page-0001" src="https://github.com/user-attachments/assets/4cf35817-c5fd-4bce-9c61-8061ea462da3" />
 
 *Figure 1. DINO teacher–student pretraining pipeline.*
 
@@ -32,9 +32,8 @@ The supervised classifier has two branches:
 - **Fusion and prediction:** the two 128-dimensional embeddings are concatenated into a 256-dimensional joint representation and passed through an MLP ending in a single sigmoid glaucoma probability.
 
 During supervised training, mild brightness and gamma augmentation is applied consistently across all 12 OCT slices from a subject; no spatial rotations or flips are used, and the RNFLT map is not augmented.
-<img width="1098" height="549" alt="image" src="https://github.com/user-attachments/assets/be92432c-5fb8-40da-a1eb-7ec13b4bb585" />
-<img width="1098" height="198" alt="image" src="https://github.com/user-attachments/assets/c6dae4dc-12a2-493e-a326-0d6f93a4fb6d" />
-
+<img width="6600" height="3300" alt="Image2_page-0001 (1)" src="https://github.com/user-attachments/assets/0af9f84b-f601-4e92-ad5b-878fe8207da3" />
+<img width="7500" height="1350" alt="Image3_page-0001 (1)" src="https://github.com/user-attachments/assets/31ad79be-a2cb-48b6-8b45-34508402b91b" />
 *Figure 2. Two-branch diagnostic model*
 
 The classifier is trained on Harvard-GF with binary cross-entropy and AdamW for up to 25 epochs. The pretrained OCT encoder is initially frozen, and Layer 4 is unfrozen from epoch 4. The checkpoint is selected using validation AUROC alongside validation loss, and early stopping is also applied.
@@ -83,7 +82,7 @@ Performance on the 900-subject test set at the validation-selected threshold of 
 | Average precision | 88.71% | 86.58–90.73% |
 
 
-<img width="485" height="419" alt="image" src="https://github.com/user-attachments/assets/f32b8e30-6a0e-422f-b01d-14f7a20276ec" />
+<img width="485" height="419" alt="calibration_curve_with_95CI" src="https://github.com/user-attachments/assets/7749a4c6-179a-4e70-964b-09f33b7a7089" />
 
 *Figure 3. Calibration curve for predicted glaucoma probabilities on the internal Harvard-GF test set.* 
 
@@ -121,15 +120,16 @@ The project includes:
 - **Integrated Gradients** for RNFLT input pixels in the preprocessed input space.
 - **SSL representation analysis**, including intermediate activation-energy maps and embedding Grad-CAM targeting the norm of the encoder embedding.
 
-<img width="885" height="732" alt="image" src="https://github.com/user-attachments/assets/c984fcf7-8c76-48b9-b4c3-89567389247d" />
+<img width="2250" height="1800" alt="F11_pages-to-jpg-0001" src="https://github.com/user-attachments/assets/773091f9-37c5-4531-a22e-c27912779385" />
 
 *Figure 4. Grad-CAM overlays for selected OCT B-scans and Integrated Gradients attribution maps for the corresponding RNFLT inputs on the internal Harvard-GF test set.*
 
-- <img width="791" height="682" alt="image" src="https://github.com/user-attachments/assets/9da75375-763e-4492-93ec-11559109722c" />
+<img width="2250" height="1800" alt="F12_page-0001" src="https://github.com/user-attachments/assets/566e49c2-0a05-4859-ad71-4121dab12677" />
+
 *Figure 5. Grad-CAM overlays for selected OCT B-scans and Integrated Gradients attribution maps for the corresponding RNFLT inputs on the held-out Harvard-GDP test set.*
 
 
-<img width="1098" height="1000" alt="image" src="https://github.com/user-attachments/assets/bde735b9-5564-454d-9374-4decdf60f895" />
+<img width="2400" height="2250" alt="FIG13_page-0001 (1)" src="https://github.com/user-attachments/assets/afb7184d-1fdc-4ff0-b8bc-620d22ccb783" />
 
 *Figure 6. Spatial activation-energy maps across the ResNet-18 stem and residual layers, together with embedding Grad-CAM maps, for the self-supervised OCT representation.*
 
