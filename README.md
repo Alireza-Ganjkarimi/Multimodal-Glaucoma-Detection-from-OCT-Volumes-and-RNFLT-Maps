@@ -180,7 +180,7 @@ For the full methodology, experimental details, and complete uncertainty/interpr
 
 ## Citation
 
-If you use this code or the released weights, please cite the paper. 
+Since the paper has not fully completed and published, If you use this code or the proposed methodology, please cite this repositoy. 
 
 ## License and data use
 
