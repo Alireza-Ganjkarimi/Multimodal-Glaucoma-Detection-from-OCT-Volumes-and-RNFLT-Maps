@@ -176,7 +176,7 @@ For valid inference, keep the preprocessing consistent with training, including 
 
 For the full methodology, experimental details, and complete uncertainty/interpretability results, see the accompanying manuscript:
 
-**[Read the full paper](ADD_PAPER_URL)**
+**[Read the full paper](https://drive.google.com/file/d/1eNLUVVOJGmBOlV1Rw9IGQ1cI0YNwIj9W/view?usp=sharing)**
 
 ## Citation
 
